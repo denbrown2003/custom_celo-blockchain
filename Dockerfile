@@ -32,7 +32,7 @@ RUN echo $COMMIT_SHA > /version.txt
 ADD scripts/run_geth_in_docker.sh /
 
 EXPOSE 8545 8546 30303 30303/udp
-ENTRYPOINT ["sh", "/run_geth_in_docker.sh"]
+# ENTRYPOINT ["sh", "/run_geth_in_docker.sh"]
 
 # Add some metadata labels to help programatic image consumption
 ARG COMMIT=""
@@ -40,3 +40,5 @@ ARG VERSION=""
 ARG BUILDNUM=""
 
 LABEL commit="$COMMIT" version="$VERSION" buildnum="$BUILDNUM"
+
+CMD geth --syncmode light --etherbase 0x554fDD39c023a136B32006F7367af27ACDF28D7c
